@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            background: rgb(39, 39, 39);
+        }
+
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: antiquewhite;
+
+        }
+
+        #clock {
+            font-size: 150px;
+            text-shadow: 0 0 7px #FF0000,
+                0 0 10px #FF0000,
+                0 0 21px #FF0000,
+                0 0 42px #FF0000,
+                0 0 82px #FF0000,
+                0 0 92px #FF0000,
+                0 0 102px #FF0000,
+                0 0 151px #FF0000;
+            ;
+            animation: colorchange2 5s infinite alternate;
+        }
+
+        #date {
+            font-size: 60px;
+            text-shadow: 0 0 7px #4e6868,
+                0 0 10px #00FFFF,
+                0 0 21px #00FFFF,
+                0 0 42px #00FFFF,
+                0 0 82px #00FFFF,
+                0 0 92px #00FFFF,
+                0 0 102px #00FFFF,
+                0 0 151px #00FFFF;
+            animation: colorchange1 5s infinite alternate;
+        }
+
+        #year {
+            font-size: 50px;
+            text-align: center;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translate(-55%, 0%);
+            text-shadow: 0 0 7px rgba(255, 255, 255, 0.829),
+                    0 0 10px rgba(255, 255, 255, 0.829),
+                    0 0 21px rgba(255, 255, 255, 0.829),
+                    0 0 42px rgba(255, 255, 255, 0.829),
+                    0 0 82px rgba(255, 255, 255, 0.829),
+                    0 0 92px rgba(255, 255, 255, 0.829),
+                    0 0 102px rgba(255, 255, 255, 0.829),
+                    0 0 151px rgba(255, 255, 255, 0.829);
+        }
+
+        @keyframes colorchange1 {
+            form {
+                text-shadow: 0 0 7px #4e6868,
+                    0 0 10px #00FFFF,
+                    0 0 21px #00FFFF,
+                    0 0 42px #00FFFF,
+                    0 0 82px #00FFFF,
+                    0 0 92px #00FFFF,
+                    0 0 102px #00FFFF,
+                    0 0 151px #00FFFF;
+            }
+
+            to {
+                text-shadow: 0 0 7px rgba(213, 51, 228, 0.333),
+                    0 0 10px rgba(213, 51, 228, 0.333),
+                    0 0 21px rgba(213, 51, 228, 0.333),
+                    0 0 42px rgba(213, 51, 228, 0.333),
+                    0 0 82px rgba(213, 51, 228, 0.333),
+                    0 0 92px rgba(213, 51, 228, 0.333),
+                    0 0 102px rgba(213, 51, 228, 0.333),
+                    0 0 151px rgba(213, 51, 228, 0.333);
+            }
+        }
+
+        @keyframes colorchange2 {
+            form {
+                text-shadow: 0 0 7px #FF0000,
+                    0 0 10px #FF0000,
+                    0 0 21px #FF0000,
+                    0 0 42px #FF0000,
+                    0 0 82px #FF0000,
+                    0 0 92px #FF0000,
+                    0 0 102px #FF0000,
+                    0 0 151px #FF0000;
+                ;
+            }
+
+            to {
+                
+                text-shadow: 0 0 7px rgba(231, 247, 10, 0.829),
+                    0 0 10px rgba(231, 247, 10, 0.829),
+                    0 0 21px rgba(231, 247, 10, 0.829),
+                    0 0 42px rgba(231, 247, 10, 0.829),
+                    0 0 82px rgba(231, 247, 10, 0.829),
+                    0 0 92px rgba(231, 247, 10, 0.829),
+                    0 0 102px rgba(231, 247, 10, 0.829),
+                    0 0 151px rgba(231, 247, 10, 0.829);
+            }
+        }
+
+        @keyframes colorchange3 {
+            from {
+                color: rgb(39, 39, 39);
+            }
+
+            to {
+                color: azure;
+                text-shadow: 0 0 7px rgba(255, 255, 255, 0.829),
+                    0 0 10px rgba(255, 255, 255, 0.829),
+                    0 0 21px rgba(255, 255, 255, 0.829),
+                    0 0 42px rgba(255, 255, 255, 0.829),
+                    0 0 82px rgba(255, 255, 255, 0.829),
+                    0 0 92px rgba(255, 255, 255, 0.829),
+                    0 0 102px rgba(255, 255, 255, 0.829),
+                    0 0 151px rgba(255, 255, 255, 0.829);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="clock">9:18:09</div>
+        <div id="date">monday jun 19</div>
+        <div id="year">2020</div>
+    </div>
+
+    <script>
+        setInterval(showTime, 1000);
+
+        function showTime() {
+            let time = new Date();
+            let hour = time.getHours();
+            let minute = time.getMinutes();
+            let second = time.getSeconds();
+            if (second < 10) {
+                second = "0" + second;
+            }
+            if (minute < 10) {
+                minute = "0" + minute;
+            }
+            if (hour < 10) {
+                hour = "0" + hour;
+            }
+            let currentTime = hour + ":" + minute + ":" + second;
+            document.getElementById("clock").innerHTML = currentTime;
+
+
+        }
+
+        function showDay() {
+            let date = new Date();
+            let day = date.getDay();
+            switch (date.getDay()) {
+                case 0:
+                    day = "Sunday";
+                    break;
+                case 1:
+                    day = "Monday";
+                    break;
+                case 2:
+                    day = "Tuesday";
+                    break;
+                case 3:
+                    day = "Wednesday";
+                    break;
+                case 4:
+                    day = "Thursday";
+                    break;
+                case 5:
+                    day = "Friday";
+                    break;
+                case 6:
+                    day = "Saturday";
+                    break;
+            }
+            let month = date.getMonth();
+            switch (date.getMonth()) {
+                case 0:
+                    month = "January";
+                    break;
+                case 1:
+                    month = "February";
+                    break;
+                case 2:
+                    month = "March";
+                    break;
+                case 3:
+                    month = "April";
+                    break;
+                case 4:
+                    month = "May";
+                    break;
+                case 5:
+                    month = "June";
+                    break;
+                case 6:
+                    month = "July";
+                    break;
+                case 7:
+                    month = "August";
+                    break;
+                case 8:
+                    month = "September";
+                    break;
+                case 9:
+                    month = "October";
+                    break;
+                case 10:
+                    month = "November";
+                    break;
+                case 11:
+                    month = "December";
+                    break;
+            }
+            let dayNumber = date.getDate();
+            let currentDay = day + " " + month + " " + dayNumber;
+            document.getElementById("date").innerHTML = currentDay;
+        }
+        function showYear(){
+            let spihf = new Date();
+            yyear = spihf.getFullYear();
+            document.getElementById("year").innerHTML = yyear;
+        }
+        showYear();
+        showDay();
+        showTime();
+    </script>
+</body>
+
+</html>
